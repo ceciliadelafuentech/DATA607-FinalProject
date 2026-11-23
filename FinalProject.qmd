@@ -1,0 +1,32 @@
+---
+title: "Final Project"
+author: "Cecilia De La Fuente Chavez"
+format: html
+execute:
+  echo: true
+editor: visual
+---
+
+## Approach Deliverable
+
+### Overview
+
+text
+
+## Code Base Deliverable
+
+### Load libraries
+
+```{r}
+
+```
+
+### Data and transformations
+
+```{r}
+
+```
+
+## Conclusion
+
+text
