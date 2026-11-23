@@ -11,7 +11,7 @@ editor: visual
 
 ### Overview
 
-tex
+text
 
 ## Code Base Deliverable
 
