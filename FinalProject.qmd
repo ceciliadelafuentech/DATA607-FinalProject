@@ -13,6 +13,14 @@ editor: visual
 
 For this project, I plan to explore which neighborhoods in New York City may offer opportunities for expanded residential solar adoption. The motivation is to identify areas that have relatively low levels of existing solar installations despite having characteristics favorable for adoption, such as higher homeownership rates, household income, and suitable housing types. This analysis could help identify potential markets for solar installers while providing insight into differences in residential solar adoption across NYC. I plan to use residential solar installation data from the New York State Energy Research and Development Authority (NYSERDA) and demographic and housing data from the U.S. Census Bureau's 2024 American Community Survey (ACS) 5-year estimates. Using census tracts as the geographic unit, I will clean, transform, and combine the datasets to compare solar adoption rates with neighborhood characteristics. I then plan to use descriptive statistics, visualizations, and statistical analysis to identify patterns and highlight areas with potential for greater solar adoption.
 
+## Introduction
+
+### Definitions
+
+The analysis uses census tracts as its geographic unit. Census tracts are small geographic areas defined by the U.S. Census Bureau to provide demographic statistics at the neighborhood level.
+
+The housing categories used in this analysis distinguish between one unit detached homes (standalone houses), one unit attached homes (such as townhouses sharing walls), and small buildings with two to four units (multifamily buildings sharing a roof). The analysis focuses only on owner occupied one unit homes.
+
 ## Code Base Deliverable
 
 ### Load libraries
@@ -398,7 +406,7 @@ opportunity_tracts %>%
 
 57 potential residential solar opportunity areas were identified across NYC. Most were located in Queens (31) and Brooklyn (24), while Staten Island had two qualifying tracts. No tracts in the Bronx or Manhattan met all four selection criteria. This suggests that the selected combination of housing, income, and solar project characteristics is concentrated primarily in Queens and Brooklyn.
 
-### Mapping potential solar opportunity areas
+### Mapping potential opportunity areas
 
 ```{r}
 # Retrieve simplified 2020 Census tract boundaries for all five NYC boroughs.
@@ -450,3 +458,55 @@ ggplot() +
     plot.title = element_text(face = "bold")
   )
 ```
+
+## Conclusion
+
+### Results
+
+The analysis identified positive associations between three census tract characteristics and recorded NYSERDA residential solar projects across NYC. Owner occupied one unit homes had the strongest association (Spearman's ρ = 0.820), followed by overall homeownership (ρ = 0.718). Median household income had a weaker, but still positive, association (ρ = 0.349). All three relationships were statistically significant (p \< 0.001).
+
+These findings suggest that housing characteristics, particularly the prevalence of owner occupied one unit homes, are more strongly associated with solar projects than median household income. However, these relationships do not establish causation for the higher number of solar projects.
+
+Based on these findings, four criteria were used to identify potential residential solar opportunity areas: owner occupied one unit homes and homeownership rates above their respective third quartiles, median household income above the median, and recorded NYSERDA solar projects below the mean. This screening identified 57 census tracts. Most were located in Queens (31) and Brooklyn (24), while Staten Island had two qualifying tracts. No tracts in the Bronx or Manhattan met all four criteria.
+
+The selected tracts represent areas with favorable housing and income characteristics but comparatively lower recorded NYSERDA solar projects. They may warrant further investigation as potential areas for expanded solar development.
+
+### Limitations
+
+Several limitations should be considered.
+
+First, the NYSERDA dataset includes residential projects reported through its programs and does not represent all solar installations in NYC. As a result, actual number of solar projects may be higher in some areas than the dataset indicates.
+
+Second, the two datasets presented geographic identifier mismatches. The ACS data uses 2020 Census tract geography, while the NYSERDA documentation does not specify the geographic vintage of its tract identifiers. Only 1,615 of the 1,721 unique NYSERDA tract identifiers matched the ACS identifiers. This limited the number of projects that could be part of the analysis.
+
+Third, the analysis identifies correlations rather than causation. Other factors that may influence residential solar development were not examined.
+
+Finally, the analysis did not investigate other housing types such as small multifamily homes.
+
+### Future research
+
+Future research could improve geographic matching between datasets, incorporate additional sources of solar projects data, and examine multifamily housing and other factors influencing solar adoption to provide a more comprehensive assessment of residential solar opportunities across NYC.
+
+## References
+
+### Data Sources
+
+New York State Energy Research and Development Authority. (2026). *Solar Electric Programs Reported by NYSERDA: Beginning 2000*. NY Open Data. <https://data.ny.gov/Energy-Environment/Solar-Electric-Programs-Reported-by-NYSERDA-Beginn/3x8r-34rs>
+
+U.S. Census Bureau. (2026). *2024 American Community Survey 5-year estimates*. <https://www.census.gov/data/developers/data-sets/acs-5year.2024.html>
+
+### Software
+
+Walker, K. (n.d.). *tidycensus: Load US Census boundary and attribute data as tidyverse- and sf-ready data frames*. R package documentation. <https://walker-data.com/tidycensus/>
+
+Walker, K. (n.d.). *tigris: Load Census TIGER/Line shapefiles*. R package documentation. <https://cran.r-project.org/web/packages/tigris/index.html>
+
+Pebesma, E., et al. (n.d.). *sf: Simple features for R*. R package documentation. <https://r-spatial.github.io/sf/>
+
+Wickham, H., et al. (n.d.). *tidyverse: Easily install and load the tidyverse*. R package documentation. <https://cran.r-project.org/web/packages/tidyverse/>
+
+### AI Assistance
+
+OpenAI. (2026). *ChatGPT (GPT-6)* \[Large language model\]. <https://chatgpt.com/>
+
+ChatGPT was used as an AI-assisted tool for understanding R code, troubleshooting errors, clarifying statistical concepts, and improving the organization and wording of project documentation. Data preparation, analysis, interpretation, and final project decisions were reviewed and completed by the author.
