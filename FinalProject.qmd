@@ -18,8 +18,6 @@ editor: visual
 
 For this project, I plan to explore which neighborhoods in New York City may offer opportunities for expanded residential solar adoption. The motivation is to identify areas that have relatively low levels of existing solar installations despite having characteristics favorable for adoption, such as higher homeownership rates, household income, and suitable housing types. This analysis could help identify potential markets for solar installers while providing insight into differences in residential solar adoption across NYC. I plan to use residential solar installation data from the New York State Energy Research and Development Authority (NYSERDA) and demographic and housing data from the U.S. Census Bureau's 2024 American Community Survey (ACS) 5-year estimates. Using census tracts as the geographic unit, I will clean, transform, and combine the datasets to compare solar adoption rates with neighborhood characteristics. I then plan to use descriptive statistics, visualizations, and statistical analysis to identify patterns and highlight areas with potential for greater solar adoption.
 
-## Introduction
-
 ### Definitions
 
 The analysis uses census tracts as its geographic unit. Census tracts are small geographic areas defined by the U.S. Census Bureau to provide demographic statistics at the neighborhood level.
