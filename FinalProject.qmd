@@ -1,7 +1,12 @@
 ---
 title: "Final Project"
 author: "Cecilia De La Fuente Chavez"
-format: html
+date: today
+format:
+  html:
+    theme: cosmo
+    toc: true
+    embed-resources: true
 execute:
   echo: true
 editor: visual
