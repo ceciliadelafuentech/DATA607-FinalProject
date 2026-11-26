@@ -180,7 +180,7 @@ nyc_analysis <- nyc_analysis %>%
   )
 ```
 
-### Exploratory Data Analysis 
+### Exploratory Data Analysis
 
 ```{r}
 # Calculate summary statistics for homeownership, housing type, and median household income across NYC census tracts.
@@ -416,6 +416,13 @@ nyc_tracts <- tracts(
   year = 2020,
   cb = TRUE
 )
+# Retrieve NYC water features
+nyc_water <- area_water(
+  state = "NY",
+  county = c("Bronx", "Kings", "New York", "Queens", "Richmond"),
+  year = 2020,
+  class = "sf"
+)
 ```
 
 ```{r}
@@ -431,12 +438,20 @@ nyc_tracts <- nyc_tracts %>%
 
 ```{r}
 ggplot() +
+  # Background census tracts
   geom_sf(
     data = nyc_tracts,
     fill = "grey90",
     color = "white",
     linewidth = 0.1
   ) +
+  # Water features
+  geom_sf(
+    data = nyc_water,
+    fill = "#BFDDEB",
+    color = NA
+  ) +
+  # Selected opportunity tracts
   geom_sf(
     data = nyc_tracts %>% filter(candidate),
     fill = "#E76F51",
